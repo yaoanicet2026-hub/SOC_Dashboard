@@ -11,6 +11,13 @@ from pathlib import Path
 # Ajouter le répertoire parent au path
 sys.path.append(str(Path(__file__).parent.parent))
 
+# Initialisation cloud
+try:
+    from utils.cloud_init import init_cloud_environment
+    init_cloud_environment()
+except:
+    pass
+
 from utils.data_loader import DataLoader
 from utils.ai_detector import AIDetector
 from utils.alert_manager import AlertManager
