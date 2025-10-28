@@ -7,13 +7,18 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import pandas as pd
+import numpy as np
 
 def show_dashboard():
     st.header("🏠 Dashboard Principal")
     
-    # Récupérer les données
-    data_loader = st.session_state.data_loader
-    kpis = data_loader.get_kpis()
+    try:
+        # Récupérer les données
+        data_loader = st.session_state.data_loader
+        kpis = data_loader.get_kpis()
+    except Exception as e:
+        st.error(f"Erreur chargement données: {e}")
+        return
     
     # KPIs principaux
     col1, col2, col3, col4 = st.columns(4)
@@ -85,8 +90,8 @@ def show_dashboard():
         
         # Simuler données temporelles
         now = datetime.now()
-        times = [now - timedelta(minutes=x) for x in range(1440, 0, -1)]
-        alerts_per_minute = [max(0, int(5 + 3 * (i % 60 - 30) / 10)) for i in range(1440)]
+        times = [now - timedelta(minutes=x) for x in range(60, 0, -1)]  # Dernière heure seulement
+        alerts_per_minute = [max(0, int(np.random.poisson(3))) for i in range(60)]
         
         fig_timeline = go.Figure()
         fig_timeline.add_trace(go.Scatter(
@@ -110,24 +115,28 @@ def show_dashboard():
     # Incidents récents
     st.subheader("🚨 Incidents Récents")
     
-    recent_alerts = data_loader.get_recent_alerts(hours=24)
-    
-    if not recent_alerts.empty:
-        # Afficher les 10 plus récents
-        display_alerts = recent_alerts.head(10)[['timestamp', 'src_ip', 'event_type', 'severity', 'host']]
-        display_alerts['timestamp'] = display_alerts['timestamp'].dt.strftime('%H:%M:%S')
+    try:
+        recent_alerts = data_loader.get_recent_alerts(hours=24)
         
-        st.dataframe(
-            display_alerts,
-            use_container_width=True,
-            column_config={
-                "severity": st.column_config.TextColumn(
-                    "Sévérité",
-                    help="Niveau de criticité"
-                )
-            }
-        )
-    else:
+        if not recent_alerts.empty:
+            # Afficher les 10 plus récents
+            display_alerts = recent_alerts.head(10)[['timestamp', 'src_ip', 'event_type', 'severity', 'host']]
+            display_alerts['timestamp'] = display_alerts['timestamp'].dt.strftime('%H:%M:%S')
+            
+            st.dataframe(
+                display_alerts,
+                use_container_width=True,
+                column_config={
+                    "severity": st.column_config.TextColumn(
+                        "Sévérité",
+                        help="Niveau de criticité"
+                    )
+                }
+            )
+        else:
+            st.info("Aucun incident récent")
+    except Exception as e:
+        st.warning(f"Erreur chargement incidents: {e}")
         st.info("Aucun incident récent")
     
     # Bouton simulation

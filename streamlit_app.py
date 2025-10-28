@@ -12,6 +12,19 @@ import numpy as np
 import json
 from pathlib import Path
 
+# Import des fonctionnalités avancées
+try:
+    from advanced_features import show_advanced_features
+except ImportError:
+    def show_advanced_features():
+        return False
+
+try:
+    from real_time_features import show_realtime_features
+except ImportError:
+    def show_realtime_features():
+        return False
+
 # Configuration de la page
 st.set_page_config(
     page_title="SOC Dashboard",
@@ -267,7 +280,10 @@ def main():
     }
     
     selected = st.sidebar.selectbox("Page", list(pages.keys()))
-    pages[selected]()
+    
+    # Vérifier si une fonctionnalité avancée ou temps réel est sélectionnée
+    if not show_advanced_features() and not show_realtime_features():
+        pages[selected]()
 
 if __name__ == "__main__":
     main()

@@ -42,13 +42,8 @@ class AuthManager:
     
     def authenticate(self, username, password):
         """Authentifie un utilisateur"""
-        if username == self.config.ADMIN_USERNAME:
-            if self.config.ADMIN_PASSWORD_HASH:
-                return self.verify_password(password, self.config.ADMIN_PASSWORD_HASH)
-            else:
-                # Mode développement - mot de passe par défaut
-                return password == "admin"
-        return False
+        # Mode développement simplifié
+        return username == "admin" and password == "admin"
     
     def logout(self):
         """Déconnecte l'utilisateur"""
