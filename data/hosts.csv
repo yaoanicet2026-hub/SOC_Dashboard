@@ -1,0 +1,21 @@
+hostname,ip_address,os,department,criticality,last_seen,status
+host-01,192.168.1.11,Ubuntu 18.04,IT,medium,2025-10-28 06:53:37,maintenance
+host-02,192.168.1.12,Windows 10,Development,medium,2025-10-28 08:22:37,online
+host-03,192.168.1.13,macOS 13,Marketing,low,2025-10-28 08:24:37,online
+host-04,192.168.1.14,RHEL 8,Finance,critical,2025-10-28 07:59:37,online
+host-05,192.168.1.15,Windows 11,Marketing,critical,2025-10-28 08:13:37,online
+host-06,192.168.1.16,CentOS 8,Finance,high,2025-10-28 06:57:37,online
+host-07,192.168.1.17,Windows Server 2019,Executive,low,2025-10-28 08:48:37,online
+host-08,192.168.1.18,Windows 11,Operations,low,2025-10-28 08:19:37,online
+host-09,192.168.1.19,CentOS 8,Finance,high,2025-10-28 07:59:37,online
+host-10,192.168.1.20,CentOS 8,HR,medium,2025-10-28 07:16:37,online
+host-11,10.0.0.6,CentOS 8,Operations,low,2025-10-28 08:16:37,online
+host-12,10.0.0.7,Ubuntu 18.04,Finance,medium,2025-10-28 08:18:37,online
+host-13,10.0.0.8,Debian 11,Operations,medium,2025-10-28 07:27:37,online
+host-14,10.0.0.9,RHEL 8,Finance,high,2025-10-28 07:55:37,online
+host-15,10.0.0.10,Ubuntu 20.04,Marketing,medium,2025-10-28 07:27:37,online
+host-16,172.16.0.6,RHEL 8,Development,medium,2025-10-28 07:21:37,online
+host-17,172.16.0.7,CentOS 8,HR,high,2025-10-28 06:51:37,online
+host-18,172.16.0.8,CentOS 8,Development,medium,2025-10-28 07:54:37,online
+host-19,172.16.0.9,Debian 11,Marketing,medium,2025-10-28 07:42:37,online
+host-20,172.16.0.10,Windows Server 2016,IT,high,2025-10-28 07:39:37,offline

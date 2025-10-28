@@ -1,0 +1,222 @@
+/* SOC Dashboard - Thème Cyberpunk Sombre */
+
+/* Variables CSS */
+:root {
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #1a1a1a;
+    --accent-bg: #2a2a2a;
+    --primary-text: #00ff88;
+    --secondary-text: #ffffff;
+    --accent-text: #888888;
+    --critical-color: #ff4444;
+    --high-color: #ff8800;
+    --medium-color: #ffcc00;
+    --low-color: #44ff44;
+    --border-color: #333333;
+}
+
+/* Background principal */
+.stApp {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    color: var(--secondary-text);
+}
+
+/* Sidebar */
+.css-1d391kg {
+    background: var(--secondary-bg);
+    border-right: 1px solid var(--border-color);
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: var(--primary-text);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+/* Métriques */
+.metric-container {
+    background: var(--accent-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Boutons */
+.stButton > button {
+    background: linear-gradient(45deg, var(--primary-text), #00cc66);
+    color: var(--primary-bg);
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 255, 136, 0.2);
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 255, 136, 0.4);
+}
+
+/* Boutons primaires */
+.stButton > button[kind="primary"] {
+    background: linear-gradient(45deg, var(--critical-color), #ff6666);
+    box-shadow: 0 2px 4px rgba(255, 68, 68, 0.2);
+}
+
+/* Tables */
+.stDataFrame {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+/* Graphiques Plotly */
+.js-plotly-plot {
+    background: var(--secondary-bg) !important;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+/* Selectbox et inputs */
+.stSelectbox > div > div {
+    background: var(--accent-bg);
+    border: 1px solid var(--border-color);
+    color: var(--secondary-text);
+}
+
+.stTextInput > div > div > input {
+    background: var(--accent-bg);
+    border: 1px solid var(--border-color);
+    color: var(--secondary-text);
+}
+
+/* Alertes et notifications */
+.stSuccess {
+    background: rgba(68, 255, 68, 0.1);
+    border: 1px solid var(--low-color);
+    color: var(--low-color);
+}
+
+.stError {
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid var(--critical-color);
+    color: var(--critical-color);
+}
+
+.stWarning {
+    background: rgba(255, 204, 0, 0.1);
+    border: 1px solid var(--medium-color);
+    color: var(--medium-color);
+}
+
+.stInfo {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid var(--primary-text);
+    color: var(--primary-text);
+}
+
+/* Expanders */
+.streamlit-expanderHeader {
+    background: var(--accent-bg);
+    border: 1px solid var(--border-color);
+    color: var(--primary-text);
+}
+
+/* Dividers */
+hr {
+    border-color: var(--border-color);
+    margin: 2rem 0;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-text);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00cc66;
+}
+
+/* Animation pour les éléments critiques */
+@keyframes pulse-critical {
+    0% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0); }
+}
+
+.critical-alert {
+    animation: pulse-critical 2s infinite;
+}
+
+/* Glow effect pour les éléments importants */
+.glow {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .stApp {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .metric-container {
+        padding: 0.5rem;
+    }
+}
+
+/* Custom classes pour les sévérités */
+.severity-critical {
+    background-color: var(--critical-color) !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.severity-high {
+    background-color: var(--high-color) !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.severity-medium {
+    background-color: var(--medium-color) !important;
+    color: black !important;
+    font-weight: bold;
+}
+
+.severity-low {
+    background-color: var(--low-color) !important;
+    color: black !important;
+    font-weight: bold;
+}
+
+/* Loading spinner personnalisé */
+.stSpinner > div {
+    border-color: var(--primary-text) transparent transparent transparent;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 1rem;
+    background: var(--secondary-bg);
+    border-top: 1px solid var(--border-color);
+    color: var(--accent-text);
+    font-size: 0.8rem;
+}
